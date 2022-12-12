@@ -1,12 +1,19 @@
-var builder = WebApplication.CreateBuilder(args);
+using GeekShopping.ProductAPI.Model.Context;
+using Microsoft.EntityFrameworkCore;
 
-// Add services to the container.
+#region Builder
+var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("Default");
+
+builder.Services.AddDbContext<APIDbContext>(
+    options => options.UseSqlServer(connectionString));
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+#endregion
 
+#region APP
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -21,3 +28,4 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+#endregion
