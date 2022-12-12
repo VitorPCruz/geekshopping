@@ -52,7 +52,7 @@ namespace GeekShopping.ProductAPI.Repository.Interfaces
         {
             try
             {
-                var product = await _context.Products.FirstOrDefaultAsync(x => x.Id == id));
+                var product = await _context.Products.FirstOrDefaultAsync(x => x.Id == id);
                 if (product != null) return false;
 
                 _context.Products.Remove(product);
