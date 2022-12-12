@@ -6,8 +6,8 @@ namespace GeekShopping.ProductAPI.Repository.Interfaces
     {
         Task<IEnumerable<ProductVO>> FindAll();
         Task<ProductVO> FindById(long id);
-        Task<ProductVO> Create(ProductVO productVo);
-        Task<ProductVO> Update(ProductVO productVo);
+        Task<ProductVO> Create(ProductVO productVO);
+        Task<ProductVO> Update(ProductVO productVO);
         Task<bool> Delete(long id);
     }
 }

@@ -30,19 +30,20 @@ namespace GeekShopping.ProductAPI.Repository.Interfaces
                 await _context.Products.ToListAsync());
         }
 
-        public async Task<ProductVO> Create(ProductVO productVo)
+        public async Task<ProductVO> Create(ProductVO productVO)
         {
-            var product = _mapper.Map<Product>(productVo);
+            var product = _mapper.Map<Product>(productVO);
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
             // TODO: Refatorar o retorno de CREATE para ProductVO recebido como parâmetro
             return _mapper.Map<ProductVO>(product); ;
         }
 
-        public async Task<ProductVO> Update(ProductVO productVo)
+        public async Task<ProductVO> Update(ProductVO productVO)
         {
-            var product = _mapper.Map<Product>(productVo);
+            var product = _mapper.Map<Product>(productVO);
             _context.Products.Update(product);
+           
             await _context.SaveChangesAsync();
             // TODO: Refatorar o retorno de UPDATE para ProductVO recebido como parâmetro
             return _mapper.Map<ProductVO>(product); ;
@@ -53,7 +54,7 @@ namespace GeekShopping.ProductAPI.Repository.Interfaces
             try
             {
                 var product = await _context.Products.FirstOrDefaultAsync(x => x.Id == id);
-                if (product != null) return false;
+                if (product == null) return false;
 
                 _context.Products.Remove(product);
                 await _context.SaveChangesAsync();
