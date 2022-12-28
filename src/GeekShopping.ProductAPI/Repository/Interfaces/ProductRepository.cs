@@ -1,9 +1,8 @@
 ﻿using AutoMapper;
+using GeekShopping.ProductAPI.ApplicationContexts;
 using GeekShopping.ProductAPI.Data.ValueObjects;
 using GeekShopping.ProductAPI.Model;
-using GeekShopping.ProductAPI.Model.Context;
 using Microsoft.EntityFrameworkCore;
-using System.Data;
 
 namespace GeekShopping.ProductAPI.Repository.Interfaces
 {
