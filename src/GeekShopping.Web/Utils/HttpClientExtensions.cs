@@ -9,7 +9,7 @@ namespace GeekShopping.Web.Utils
         public static MediaTypeHeaderValue contentType = 
             new MediaTypeHeaderValue("application/json");
 
-        public static async Task<T> GetAsync<T>(
+        public static async Task<T> ReadContentAs<T>(
             this HttpResponseMessage response)
         {
             if (!response.IsSuccessStatusCode)
