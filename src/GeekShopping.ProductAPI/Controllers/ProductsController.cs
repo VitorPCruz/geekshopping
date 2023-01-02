@@ -47,7 +47,7 @@ namespace GeekShopping.ProductAPI.Controllers
         {
             var status = await _repository.Delete(id);
             if (!status) return BadRequest();
-            return Ok();
+            return Ok(status);
         }
     }
 }
