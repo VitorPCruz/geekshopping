@@ -10,7 +10,7 @@ namespace GeekShopping.Web.Controllers
 
         public ProductsController(IProductService productsService)
         {
-            _productsService = productsService ??  
+            _productsService = productsService ??
                 throw new ArgumentNullException(nameof(productsService));
         }
 
@@ -40,10 +40,28 @@ namespace GeekShopping.Web.Controllers
             return View(model);
         }
 
-        [HttpPut]
-        public async Task<IActionResult> Update()
+        public async Task<IActionResult> Update(long id)
         {
-            return View();
+            var model = await _productsService.FindProductById(id);
+
+            if (model != null) return View(model);
+
+            return NotFound();
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Update(ProductModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var response = await _productsService.UpdateProduct(model);
+
+                if (response != null)
+                    return RedirectToAction(nameof(Index));
+            }
+
+            return View(model);
         }
     }
 }

@@ -33,11 +33,6 @@ namespace GeekShopping.Web.Utils
             var dataAsString = JsonSerializer.Serialize(data);
             var content = new StringContent(dataAsString);
 
-            // TODO - REMOVER ESTES COMENTÁRIOS DESTE CÓDIGO
-            Console.WriteLine("# ---------------------------------------");
-            Console.WriteLine(content);
-            Console.WriteLine("# ---------------------------------------");
-
             content.Headers.ContentType = contentType;
             return httpClient.PostAsync(url, content);
         }
@@ -49,13 +44,8 @@ namespace GeekShopping.Web.Utils
             var dataAsString = JsonSerializer.Serialize(data);
             var content = new StringContent(dataAsString);
 
-            // TODO - REMOVER ESTES COMENTÁRIOS DESTE CÓDIGO
-            Console.WriteLine("# ---------------------------------------");
-            Console.WriteLine(content);
-            Console.WriteLine("# ---------------------------------------");
-
             content.Headers.ContentType = contentType;
-            return httpClient.PutAsJson(url, content);
+            return httpClient.PutAsync(url, content);
         }
     }
 }
